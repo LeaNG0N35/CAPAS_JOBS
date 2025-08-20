@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: job-covers
+    env: docker
+    plan: free
+    autoDeploy: true
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: APP_PASSWORD
+        sync: false

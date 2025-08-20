@@ -1,0 +1,28 @@
+# ==============================
+# JOB COVER
+# ==============================
+JOBNAME                 : {{ job.jobname }}
+WORKFLOW_NAME          : {{ job.workflow_name or '-' }}
+APPLICATION            : {{ job.application or '-' }}
+GROUP                  : {{ job.group or '-' }}
+
+# --- RELACIONAMENTOS ---
+PREDECESSORS           : {% if job.predecessors %}{{ job.predecessors|join(', ') }}{% else %}-{% endif %}
+SUCCESSORS             : {% if job.successors %}{{ job.successors|join(', ') }}{% else %}-{% endif %}
+
+# --- I/O E LOGS ---
+LOG_PATH               : {{ job.log_path or '-' }}
+INPUT_PATH             : {{ job.input_path or '-' }}
+OUTPUT_PATH            : {{ job.output_path or '-' }}
+NAMING                 : {{ job.naming or '-' }}
+
+# --- PARAMS ---
+PARAMETERS:
+{% if job.parameters_list %}{% for p in job.parameters_list %}- {{ p }}{% endfor %}{% else %}-{% endif %}
+
+# --- DESCRIÇÃO ---
+PROCESS_DESCRIPTION    : {{ job.process_description or '-' }}
+FUNCTIONALITY_DESC     : {{ job.functionality_description or '-' }}
+
+# Metadata
+GENERATED_AT           : {{ generated_at }}
